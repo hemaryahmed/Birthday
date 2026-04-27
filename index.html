@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>For My Pakhi 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ff4da6;
+  --purple:#c970ff;
+  --soft:#ffd6ee;
+  --gold:#ffd700;
+  --bg:#08001a;
+  --glass:rgba(255,255,255,0.07);
+  --border:rgba(255,100,180,0.18);
+}
+ 
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+ 
+html,body{
+  width:100%;height:100%;
+  overflow:hidden;
+  background:var(--bg);
+  color:#fff;
+  font-family:'DM Sans',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  touch-action:manipulation;
+}
+ 
+/* CANVAS BG */
+#bg-canvas{
+  position:fixed;inset:0;
+  width:100%;height:100%;
+  z-index:0;pointer-events:none;
+}
+ 
+/* AURORA */
+.aurora{
+  position:fixed;inset:0;z-index:1;pointer-events:none;
+  overflow:hidden;
+}
+.aurora-blob{
+  position:absolute;border-radius:50%;
+  filter:blur(80px);opacity:0.18;
+  animation:drift 12s ease-in-out infinite;
+}
+.ab1{width:400px;height:400px;background:#ff4da6;top:-100px;left:-100px;animation-delay:0s;}
+.ab2{width:350px;height:350px;background:#c970ff;bottom:-80px;right:-80px;animation-delay:-4s;}
+.ab3{width:300px;height:300px;background:#4dc8ff;top:40%;left:30%;animation-delay:-8s;}
+@keyframes drift{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(30px,-20px) scale(1.05);}
+  66%{transform:translate(-20px,15px) scale(0.95);}
+}
+ 
+/* FLOATING EMOJIS */
+.floater{
+  position:fixed;z-index:2;pointer-events:none;
+  animation:floatRise linear infinite;
+  will-change:transform;
+}
+@keyframes floatRise{
+  0%{transform:translateY(105vh) rotate(0deg);opacity:0;}
+  8%{opacity:1;}
+  92%{opacity:0.7;}
+  100%{transform:translateY(-8vh) rotate(var(--rot,20deg));opacity:0;}
+}
+ 
+/* APP SHELL */
+#app{
+  position:fixed;inset:0;
+  display:flex;justify-content:center;align-items:center;
+  z-index:10;
+  padding:16px;
+  overflow:hidden;
+}
+ 
+/* SCREENS */
+.screen{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  width:100%;
+  max-width:400px;
+  max-height:100vh;
+  animation:screenIn 0.55s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.screen.active{display:flex;}
+@keyframes screenIn{
+  from{opacity:0;transform:scale(0.88) translateY(24px);}
+  to{opacity:1;transform:scale(1) translateY(0);}
+}
+ 
+/* GLASS CARD */
+.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:22px 20px;
+  width:100%;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+ 
+/* SCROLL CARD */
+.card-scroll{
+  max-height:52vh;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.card-scroll::-webkit-scrollbar{display:none;}
+ 
+/* BTN */
+.btn{
+  padding:13px 30px;
+  border:1.5px solid rgba(255,100,180,0.5);
+  border-radius:50px;
+  background:rgba(255,60,150,0.18);
+  color:#fff;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:0.3px;
+  transition:all 0.25s;
+  min-height:48px;
+  min-width:140px;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  -webkit-backdrop-filter:blur(8px);
+}
+.btn:active{transform:scale(0.95);background:rgba(255,60,150,0.4);}
+ 
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+ 
+/* TITLES */
+.title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(20px,5.5vw,26px);
+  font-weight:700;
+  line-height:1.25;
+  text-align:center;
+}
+.sub{font-size:clamp(12px,3.5vw,14px);opacity:0.75;line-height:1.65;text-align:center;}
+ 
+/* GRADIENT TEXT */
+.grad{
+  background:linear-gradient(135deg,#ff4da6,#c970ff,#ff9de2);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.gold-grad{
+  background:linear-gradient(135deg,#ffd700,#ff9de2,#c970ff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+ 
+/* ===== S1 INTRO ===== */
+#s1{cursor:pointer;}
+.big-emoji{
+  font-size:72px;line-height:1;
+  animation:heartbeat 1.6s ease-in-out infinite;
+  display:block;
+  filter:drop-shadow(0 0 20px rgba(255,77,166,0.7));
+}
+@keyframes heartbeat{
+  0%,100%{transform:scale(1);}
+  14%{transform:scale(1.13);}
+  28%{transform:scale(1);}
+  42%{transform:scale(1.08);}
+  70%{transform:scale(1);}
+}
+.tap-ring{
+  width:90px;height:90px;border-radius:50%;
+  border:2px solid rgba(255,77,166,0.4);
+  position:absolute;
+  animation:ringPulse 1.8s ease-out infinite;
+}
+.tap-ring:nth-child(2){animation-delay:0.6s;}
+.tap-ring:nth-child(3){animation-delay:1.2s;}
+@keyframes ringPulse{
+  0%{transform:scale(0.7);opacity:0.8;}
+  100%{transform:scale(2.2);opacity:0;}
+}
+.intro-wrap{position:relative;display:flex;align-items:center;justify-content:center;width:100px;height:100px;}
+.tap-hint{
+  font-size:13px;opacity:0;color:rgba(255,200,230,0.7);
+  letter-spacing:1.5px;text-transform:uppercase;
+  animation:hintFade 3s ease 1.5s infinite;
+}
+@keyframes hintFade{0%,100%{opacity:0;}50%{opacity:0.7;}}
+ 
+/* ===== S2 COUNTDOWN ===== */
+#count-num{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(90px,25vw,120px);
+  font-weight:900;
+  background:linear-gradient(135deg,#ff4da6,#c970ff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:countBounce 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  line-height:1;
+}
+@keyframes countBounce{from{transform:scale(1.5);opacity:0;}to{transform:scale(1);opacity:1;}}
+.count-sub{font-size:13px;letter-spacing:3px;opacity:0.4;text-transform:uppercase;}
+ 
+/* ===== S3 NAME ===== */
+.name-letter{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,10vw,46px);
+  font-weight:900;
+  display:inline-block;
+  background:linear-gradient(135deg,#ff4da6,#c970ff,#ffd700);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:letterIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  opacity:0;
+}
+@keyframes letterIn{
+  from{opacity:0;transform:translateY(30px) rotate(-8deg) scale(0.5);}
+  to{opacity:1;transform:translateY(0) rotate(0) scale(1);}
+}
+.slideshow{
+  width:100%;
+  height:clamp(160px,42vw,210px);
+  border-radius:18px;overflow:hidden;
+  border:1.5px solid rgba(255,100,180,0.3);
+  position:relative;
+}
+.slideshow img{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;top:0;left:0;
+  transition:opacity 0.9s ease;
+}
+.typing-area{
+  font-size:clamp(13px,3.8vw,15px);
+  line-height:1.75;
+  color:rgba(255,210,235,0.9);
+  min-height:52px;
+  text-align:center;
+}
+.cursor{display:inline-block;animation:cur 0.75s step-end infinite;}
+@keyframes cur{0%,100%{opacity:1;}50%{opacity:0;}}
+ 
+/* ===== S4 BDAY ===== */
+.bday-big{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(26px,7vw,34px);
+  font-weight:900;
+  background:linear-gradient(135deg,#ffd700,#ff4da6,#c970ff);
+  background-size:200%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shimmer 2.5s linear infinite;
+  line-height:1.2;
+}
+@keyframes shimmer{0%{background-position:0%;}100%{background-position:200%;}}
+ 
+/* FIREWORK */
+.fw{
+  position:fixed;
+  width:6px;height:6px;border-radius:50%;
+  animation:fwExp 1.3s ease-out forwards;
+  pointer-events:none;z-index:300;
+}
+@keyframes fwExp{to{transform:translate(var(--fx),var(--fy));opacity:0;width:2px;height:2px;}}
+ 
+/* ===== S5 TIMELINE ===== */
+.tl-item{
+  display:flex;gap:14px;align-items:flex-start;
+  padding-bottom:18px;margin-bottom:2px;
+  border-left:1.5px solid rgba(255,100,180,0.2);
+  margin-left:18px;padding-left:18px;
+  position:relative;
+}
+.tl-item:last-child{border-left-color:transparent;padding-bottom:0;}
+.tl-dot{
+  position:absolute;left:-22px;top:0;
+  width:38px;height:38px;min-width:38px;
+  border-radius:50%;
+  background:rgba(255,77,166,0.15);
+  border:1.5px solid rgba(255,100,180,0.45);
+  display:flex;align-items:center;justify-content:center;
+  font-size:17px;
+}
+.tl-year{font-size:11px;color:rgba(255,150,200,0.65);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
+.tl-desc{font-size:clamp(12px,3.5vw,13.5px);line-height:1.65;color:rgba(255,215,240,0.88);}
+ 
+/* ===== S6 PHOTO GRID ===== */
+.photo-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto auto;
+  gap:8px;width:100%;
+}
+.photo-slot{
+  border-radius:14px;overflow:hidden;
+  border:1.5px solid rgba(255,100,180,0.25);
+  background:rgba(255,255,255,0.04);
+  position:relative;
+}
+.photo-slot:first-child{grid-column:1/3;height:clamp(130px,36vw,170px);}
+.photo-slot:not(:first-child){height:clamp(90px,24vw,120px);}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-label{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(0,0,0,0.6));
+  padding:16px 10px 8px;
+  font-size:11px;color:rgba(255,220,240,0.8);
+  text-align:center;
+}
+ 
+/* ===== S7 LETTER PAGE ===== */
+.letter-paper{
+  background:linear-gradient(135deg,rgba(255,77,166,0.08),rgba(201,112,255,0.08));
+  border:1px solid rgba(255,100,180,0.2);
+  border-radius:20px;padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+.letter-paper::before{
+  content:'';position:absolute;top:-30px;right:-30px;
+  width:100px;height:100px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,77,166,0.15),transparent);
+}
+.letter-salutation{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:12px;color:rgba(255,180,220,1);}
+.letter-body{font-size:clamp(12.5px,3.6vw,14px);line-height:1.8;color:rgba(255,215,240,0.88);}
+.letter-sign{font-family:'Playfair Display',serif;font-size:15px;margin-top:14px;color:rgba(255,150,200,0.9);font-style:italic;}
+ 
+/* ===== S8 DISTANCE WISHES ===== */
+.wish-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,100,180,0.15);
+  border-radius:16px;padding:14px;margin-bottom:10px;
+}
+.wish-card:last-child{margin-bottom:0;}
+.wish-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.wish-icon-wrap{
+  width:38px;height:38px;min-width:38px;border-radius:50%;
+  background:rgba(255,77,166,0.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.wish-title{font-size:13px;font-weight:500;color:rgba(255,180,220,0.9);}
+.wish-body{font-size:clamp(12px,3.4vw,13px);line-height:1.7;color:rgba(255,215,240,0.82);}
+ 
+/* ===== S9 MEMORIES (VIDEO) ===== */
+video{
+  width:100%;border-radius:16px;max-height:240px;
+  border:1.5px solid rgba(255,100,180,0.25);display:block;
+}
+ 
+/* ===== S10 PROMISES ===== */
+.promise{
+  display:flex;align-items:flex-start;gap:12px;
+  background:rgba(255,255,255,0.04);
+  border-radius:14px;padding:13px 14px;
+  margin-bottom:10px;
+  border:1px solid rgba(255,100,180,0.12);
+}
+.promise:last-child{margin-bottom:0;}
+.pr-icon{font-size:20px;min-width:26px;line-height:1.4;}
+.pr-text{font-size:clamp(12px,3.4vw,13px);line-height:1.65;color:rgba(255,215,240,0.88);}
+ 
+/* ===== S11 METER ===== */
+.meter-track{
+  width:100%;height:18px;border-radius:20px;
+  background:rgba(255,255,255,0.1);overflow:hidden;margin:12px 0;
+}
+.meter-fill{
+  height:100%;border-radius:20px;
+  background:linear-gradient(90deg,#ff4da6,#c970ff,#ffd700);
+  background-size:200%;
+  width:0%;transition:width 0.04s linear;
+  animation:meterShimmer 1.5s linear infinite;
+}
+@keyframes meterShimmer{0%{background-position:0%;}100%{background-position:200%;}}
+.meter-pct{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(36px,10vw,46px);font-weight:900;
+  background:linear-gradient(135deg,#ff4da6,#c970ff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.meter-label{font-size:13px;color:rgba(255,180,220,0.7);letter-spacing:0.5px;min-height:20px;}
+ 
+/* ===== S12 QUESTION ===== */
+.question-emoji{
+  font-size:56px;line-height:1;
+  animation:wobble 2s ease-in-out infinite;
+}
+@keyframes wobble{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
+ 
+/* ===== S13 FINAL ===== */
+.final-card{
+  background:linear-gradient(135deg,rgba(255,77,166,0.12),rgba(201,112,255,0.12));
+  border:1px solid rgba(255,100,180,0.25);
+  border-radius:28px;padding:28px 22px;
+  text-align:center;
+}
+.final-main{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(17px,5vw,22px);
+  font-weight:700;line-height:1.5;
+  background:linear-gradient(135deg,#ffd700,#ff4da6,#c970ff);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin:14px 0 10px;
+}
+.final-from{font-size:12px;opacity:0.55;letter-spacing:1px;text-transform:uppercase;}
+ 
+/* HEARTS/PETALS FINAL */
+.floaty{
+  position:fixed;pointer-events:none;z-index:200;
+  animation:floatUp2 linear forwards;
+  will-change:transform;
+}
+@keyframes floatUp2{
+  0%{transform:translateY(0) rotate(0deg);opacity:1;}
+  100%{transform:translateY(-110vh) rotate(var(--r,30deg));opacity:0;}
+}
+ 
+/* MUSIC NOTE */
+.music-note{
+  position:fixed;z-index:200;pointer-events:none;
+  font-size:18px;opacity:0;
+  animation:noteFloat 2.5s ease-out forwards;
+}
+@keyframes noteFloat{
+  0%{transform:translate(0,0) rotate(0deg);opacity:0.9;}
+  100%{transform:translate(var(--nx),var(--ny)) rotate(var(--nr,20deg));opacity:0;}
+}
+</style>
+</head>
+<body>
+ 
+<canvas id="bg-canvas"></canvas>
+<div class="aurora">
+  <div class="aurora-blob ab1"></div>
+  <div class="aurora-blob ab2"></div>
+  <div class="aurora-blob ab3"></div>
+</div>
+ 
+<audio id="song" src="YOUR_SONG.mp3" loop></audio>
+ 
+<div id="app">
+ 
+<!-- S1: INTRO -->
+<div class="screen active" id="s1" onclick="startCountdown()">
+  <div class="intro-wrap">
+    <div class="tap-ring"></div>
+    <div class="tap-ring"></div>
+    <div class="tap-ring"></div>
+    <span class="big-emoji">💝</span>
+  </div>
+  <div class="title" style="margin-top:8px;">Something magical<br>is waiting for you</div>
+  <p class="tap-hint">✨ tap anywhere ✨</p>
+</div>
+ 
+<!-- S2: COUNTDOWN -->
+<div class="screen" id="s2">
+  <p class="count-sub">get ready...</p>
+  <div id="count-num">3</div>
+</div>
+ 
+<!-- S3: NAME + SLIDESHOW -->
+<div class="screen" id="s3">
+  <div id="namebox" style="letter-spacing:4px;"></div>
+  <div class="slideshow">
+    <img id="slide-a" src="IMG_1.jpg" alt="">
+    <img id="slide-b" src="IMG_2.jpg" alt="" style="opacity:0;">
+  </div>
+  <div class="typing-area"><span id="typing-text"></span><span class="cursor">|</span></div>
+  <button class="btn" onclick="go(4)">Next 💫</button>
+</div>
+ 
+<!-- S4: HAPPY BIRTHDAY -->
+<div class="screen" id="s4">
+  <div class="card" style="text-align:center;">
+    <div style="font-size:54px;margin-bottom:8px;filter:drop-shadow(0 0 14px rgba(255,215,0,0.5));">🎂</div>
+    <div class="bday-big">Happy Birthday,<br>Pakhi! 🎉</div>
+    <div style="width:60px;height:2px;background:linear-gradient(90deg,transparent,#ff4da6,transparent);margin:14px auto;"></div>
+    <p class="sub">Another year older, a thousand times more beautiful and a million times more loved. Today the whole universe is celebrating you. 🌙</p>
+  </div>
+  <button class="btn" onclick="go(5)">Our Story 💌</button>
+</div>
+ 
+<!-- S5: TIMELINE -->
+<div class="screen" id="s5">
+  <div class="title grad" style="margin-bottom:2px;">Our Story 💌</div>
+  <div class="card card-scroll">
+    <div style="padding-left:8px;">
+ 
+      <div class="tl-item">
+        <div class="tl-dot">🎮</div>
+        <div>
+          <div class="tl-year">2019</div>
+          <div class="tl-desc">Two strangers, same group chat then same PUNG lobby. I had no idea that one random conversation and match would change everything forever.</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item">
+        <div class="tl-dot">💬</div>
+        <div>
+          <div class="tl-year">The beginning...</div>
+          <div class="tl-desc">Late night calls, playing PUBG together, laughing about absolutely nothing. We became each other's favorite people without even noticing.</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item">
+        <div class="tl-dot">💭</div>
+        <div>
+          <div class="tl-year">The confusing phase</div>
+          <div class="tl-desc">Distance after confessing, our little situationship. Not quite friends, not yet lovers. But you were already mine and I was already yours, even if we didn't say it.</div>
+        </div>
+      </div>
+
+            <div class="tl-item">
+        <div class="tl-dot">💕</div>
+        <div>
+          <div class="tl-year">The Being together again phase</div>
+          <div class="tl-desc">Suddenly coming back to my life, again late night calls, laughing about absolutely nothing to falling in love with each other once again without even noticing...</div>
+        </div>
+      </div>
+ 
+                  <div class="tl-item">
+        <div class="tl-dot">💝</div>
+        <div>
+          <div class="tl-year">Dating without even knowing Phase</div>
+          <div class="tl-desc">2023… the most beautiful year of our lives… going on regular dates, rickshaw rides around TSC, walking together at night holding hands, getting lost in each other’s eyes, and so many more little moments like these…</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item">
+        <div class="tl-dot">✈️</div>
+        <div>
+          <div class="tl-year">The distance</div>
+          <div class="tl-desc">Since 02 January 2024. Miles between us. Different time zones. But somehow that never made me love you less it just made me miss you more.</div>
+        </div>
+      </div>
+ 
+      <div class="tl-item">
+        <div class="tl-dot">❤️</div>
+        <div>
+          <div class="tl-year">2026</div>
+          <div class="tl-desc">Still doing long distance and falling in love with you more and more everyday and praying that someday we will be together again. </div>
+        </div>
+      </div>
+ 
+      <div class="tl-item">
+        <div class="tl-dot">🌙</div>
+        <div>
+          <div class="tl-year">Forever</div>
+          <div class="tl-desc">My person. My safe place. My home. No matter how far apart we are or where life takes us next.</div>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+  <button class="btn" onclick="go(6)">Our Photos 📸</button>
+</div>
+ 
+<!-- S6: PHOTO MEMORIES -->
+<div class="screen" id="s6">
+  <div class="title grad" style="margin-bottom:2px;">Moments I Treasure 📸</div>
+  <div class="photo-grid">
+    <div class="photo-slot" style="grid-column:1/3;">
+      <img src="IMG_1.jpg" alt="our photo">
+      <div class="photo-label">Us 💖</div>
+    </div>
+    <div class="photo-slot"><img src="IMG_2.jpg" alt=""><div class="photo-label">🌙</div></div>
+    <div class="photo-slot"><img src="IMG_3.jpg" alt=""><div class="photo-label">✨</div></div>
+    <div class="photo-slot"><img src="IMG_4.jpg" alt=""><div class="photo-label">💕</div></div>
+    <div class="photo-slot"><img src="IMG_5.jpg" alt=""><div class="photo-label">🌸</div></div>
+  </div>
+  <button class="btn" onclick="go(7)">A Letter for You 💌</button>
+</div>
+ 
+<!-- S7: LOVE LETTER -->
+<div class="screen" id="s7">
+  <div class="title grad" style="margin-bottom:2px;">A Letter for You 💌</div>
+  <div class="card card-scroll">
+    <div class="letter-paper">
+      <div class="letter-salutation">My dearest Tonmoy Pakhi,</div>
+      <div class="letter-body">
+        Happy Birthday, love. 🎂<br><br>
+        I've been trying to find the perfect words for days and honestly? There aren't any. Because what I feel for you is so much bigger than words and it's hard to describe too. <br><br>
+        From the day we first talked in group chat to the evening we played PUBG together, to every late night call, every deep conversation, every "good morning" across different time zones you have been my constant. My favorite chapter in a story I never expected to write.<br><br>
+        The distance is hard. Some nights it feels impossible. But then you text me something silly and I remember this is worth every single kilometers between us.<br><br>
+        You make everything better just by existing. You are kind and chaotic and beautiful and completely, utterly mine.<br><br>
+        On your birthday, I don't just want to wish you happiness I want to <em>give</em> you it. Every single day. For as long as you'll let me. 🌙✨
+      </div>
+      <div class="letter-sign">Forever yours, Hemary 💖</div>
+    </div>
+  </div>
+  <button class="btn" onclick="go(8)">For the Distance 🌍</button>
+</div>
+ 
+<!-- S8: LONG DISTANCE -->
+<div class="screen" id="s8">
+  <div class="title grad" style="margin-bottom:2px;">Across Every Mile 🌍</div>
+  <div class="card card-scroll">
+ 
+    <div class="wish-card">
+      <div class="wish-header">
+        <div class="wish-icon-wrap">🌙</div>
+        <div class="wish-title">Same sky, different city</div>
+      </div>
+      <div class="wish-body">Every night when you look at the moon, remember I'm looking at the same one. The distance 8,670 kilometers is just a number. Our hearts share the same sky and the same world. 💕</div>
+    </div>
+ 
+    <div class="wish-card">
+      <div class="wish-header">
+        <div class="wish-icon-wrap">📱</div>
+        <div class="wish-title">Close enough</div>
+      </div>
+      <div class="wish-body">A thousand kilometers can't stop our smiles, our bonding or stop me from choosing you  every single day, without exception.</div>
+    </div>
+ 
+    <div class="wish-card">
+      <div class="wish-header">
+        <div class="wish-icon-wrap">✈️</div>
+        <div class="wish-title">One day soon</div>
+      </div>
+      <div class="wish-body">One day the distance will be zero. Until then, every call, every meme I send, every "miss you" that's me holding your hand from wherever I am. 🌸</div>
+    </div>
+ 
+    <div class="wish-card">
+      <div class="wish-header">
+        <div class="wish-icon-wrap">⏰</div>
+        <div class="wish-title">Different clocks</div>
+      </div>
+      <div class="wish-body">You might be asleep when I'm wide awake. But I'm still thinking of you. Loving you across time zones is just something I do now. 🌙</div>
+    </div>
+ 
+    <div class="wish-card">
+      <div class="wish-header">
+        <div class="wish-icon-wrap">💌</div>
+        <div class="wish-title">Birthday wish</div>
+      </div>
+      <div class="wish-body">I wish I could be right there next to you today but since I can't, just know: my love travels faster than any flight. Happy Birthday, Pakhi. You are the BEST BEST BEST. 🎂</div>
+    </div>
+ 
+  </div>
+  <button class="btn" onclick="go(9)">Our Video 🎥</button>
+</div>
+ 
+<!-- S9: VIDEO -->
+<div class="screen" id="s9">
+  <div class="title grad" style="margin-bottom:2px;">Our Memories 🎥</div>
+  <p class="sub" style="margin-bottom:8px;">Every frame, a feeling 💕</p>
+  <video controls playsinline src="YOUR_VIDEO.mp4"></video>
+  <button class="btn" onclick="go(10)">My Promises 🤝</button>
+</div>
+ 
+<!-- S10: PROMISES -->
+<div class="screen" id="s10">
+  <div class="title grad" style="margin-bottom:2px;">I Promise You 🤝</div>
+  <div class="card card-scroll">
+ 
+    <div class="promise"><span class="pr-icon">🌅</span><span class="pr-text">To be your good morning even when we're in completely different time zones and it makes no logical sense.</span></div>
+    <div class="promise"><span class="pr-icon">💕</span><span class="pr-text">To be your peace and your happy place.</span></div>
+    <div class="promise"><span class="pr-icon">🎧</span><span class="pr-text">To make you happy in every aspect of our life. </span></div>
+    <div class="promise"><span class="pr-icon">🛡️</span><span class="pr-text">To be your safe space always. You can rant, cry, or say the most unhinged things and I'm not going anywhere.</span></div>
+    <div class="promise"><span class="pr-icon">😂</span><span class="pr-text">To make you laugh on your hardest days. Even badly. Especially badly.</span></div>
+    <div class="promise"><span class="pr-icon">🌍</span><span class="pr-text">To close this distance. Someday. For real. I mean it with everything I have.</span></div>
+    <div class="promise"><span class="pr-icon">💖</span><span class="pr-text">To love you on your best days, your worst days, and every boring Tuesday in between.</span></div>
+    <div class="promise" style="margin-bottom:0;"><span class="pr-icon">🏠</span><span class="pr-text">To always be your home wherever that ends up being, whatever it looks like.</span></div>
+ 
+  </div>
+  <button class="btn" onclick="go(11)">Love Meter 💘</button>
+</div>
+ 
+<!-- S11: LOVE METER -->
+<div class="screen" id="s11">
+  <div class="card" style="text-align:center;width:100%;">
+    <div class="title" style="margin-bottom:4px;">Love Meter 💘</div>
+    <p class="sub" style="margin-bottom:18px;">Running calculations...</p>
+    <div class="meter-label" id="meter-lbl">Warming up heart scanner... 🔍</div>
+    <div class="meter-track"><div class="meter-fill" id="meter-fill"></div></div>
+    <div class="meter-pct" id="meter-pct" style="margin:10px 0 4px;">0%</div>
+    <div id="meter-msg" class="sub" style="min-height:36px;"></div>
+  </div>
+  <button class="btn" onclick="go(12)">One last thing... 👀</button>
+</div>
+ 
+<!-- S12: QUESTION -->
+<div class="screen" id="s12">
+  <div class="question-emoji">👀</div>
+  <div class="card" style="text-align:center;">
+    <div class="title" style="margin-bottom:10px;">One final question...</div>
+    <p class="sub" style="margin-bottom:20px;">Be honest. The universe is watching. 🌙</p>
+    <div class="btn-row">
+      <button class="btn" onclick="end('yes')">Yes 💕</button>
+      <button class="btn" onclick="end('abs')">Absolutely yes 💖</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- S13: FINAL -->
+<div class="screen" id="s13">
+  <div class="final-card" style="width:100%;">
+    <div style="font-size:52px;filter:drop-shadow(0 0 20px rgba(255,77,166,0.6));">💖</div>
+    <div class="final-main" id="finalText"></div>
+    <div style="width:50px;height:1.5px;background:linear-gradient(90deg,transparent,#ff4da6,transparent);margin:14px auto;"></div>
+    <p class="final-from">From Your Hemary🌙</p>
+  </div>
+</div>
+ 
+</div><!-- /app -->
+ 
+<script>
+/* ============ STARFIELD ============ */
+const c=document.getElementById('bg-canvas');
+const cx=c.getContext('2d');
+let W,H,stars=[];
+function initStars(){
+  W=c.width=window.innerWidth;H=c.height=window.innerHeight;
+  stars=[];
+  for(let i=0;i<200;i++){
+    stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+0.3,a:Math.random(),sp:Math.random()*0.007+0.002,twinkle:Math.random()>0.5});
+  }
+}
+function drawStars(){
+  cx.clearRect(0,0,W,H);
+  stars.forEach(s=>{
+    if(s.twinkle){s.a+=s.sp;if(s.a>1||s.a<0)s.sp*=-1;}
+    cx.beginPath();cx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    cx.fillStyle=`rgba(255,190,230,${Math.max(0.05,s.a)})`;
+    cx.fill();
+  });
+  requestAnimationFrame(drawStars);
+}
+initStars();drawStars();
+window.addEventListener('resize',initStars);
+ 
+/* ============ FLOATERS ============ */
+const FLOATERS=['🌸','✨','💫','🌙','⭐','💕','🌷','🎀','🌺','💞'];
+function spawnFloater(){
+  const el=document.createElement('div');
+  el.className='floater';
+  el.innerText=FLOATERS[Math.floor(Math.random()*FLOATERS.length)];
+  el.style.left=Math.random()*100+'%';
+  const dur=Math.random()*9+10;
+  el.style.animationDuration=dur+'s';
+  el.style.animationDelay=Math.random()*3+'s';
+  el.style.fontSize=(Math.random()*10+10)+'px';
+  el.style.setProperty('--rot',(Math.random()*80-40)+'deg');
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),(dur+4)*1000);
+}
+for(let i=0;i<6;i++) setTimeout(spawnFloater,i*500);
+setInterval(spawnFloater,1400);
+ 
+/* ============ NAV ============ */
+let cur=1;
+function go(n){
+  document.getElementById('s'+cur).classList.remove('active');
+  cur=n;
+  const el=document.getElementById('s'+n);
+  el.style.animation='none';
+  void el.offsetWidth;
+  el.style.animation='';
+  el.classList.add('active');
+  if(n===3){nameAnim();startSlideshow();startTyping();}
+  if(n===4){launchFireworks();}
+  if(n===11){runMeter();}
+}
+ 
+/* ============ COUNTDOWN ============ */
+function startCountdown(){
+  go(2);
+  // Play music immediately on first user interaction
+  const audio=document.getElementById('song');
+  audio.volume=0;
+  audio.play().catch(()=>{});
+  // Fade in volume
+  let vol=0;
+  const fadeIn=setInterval(()=>{
+    vol=Math.min(1,vol+0.05);
+    audio.volume=vol;
+    if(vol>=1)clearInterval(fadeIn);
+  },80);
+ 
+  let num=3;
+  const el=document.getElementById('count-num');
+  const tick=()=>{
+    num--;
+    if(num===0){go(3);return;}
+    el.style.animation='none';
+    void el.offsetWidth;
+    el.style.animation='countBounce 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+    el.innerText=num;
+    setTimeout(tick,1000);
+  };
+  setTimeout(tick,1000);
+}
+ 
+/* ============ NAME ============ */
+function nameAnim(){
+  const name='Happy Birthday Tonmoy';
+  const box=document.getElementById('namebox');
+  box.innerHTML='';
+  [...name].forEach((l,i)=>{
+    const s=document.createElement('span');
+    s.className='name-letter';
+    s.innerText=l;
+    s.style.animationDelay=(i*0.14)+'s';
+    box.appendChild(s);
+  });
+}
+ 
+/* ============ SLIDESHOW ============ */
+const IMGS=['IMG_1.jpg','IMG_2.jpg','IMG_3.jpg','IMG_4.jpg','IMG_5.jpg'];
+let sIdx=0,slotA=true;
+function startSlideshow(){
+  sIdx=0;slotA=true;
+  document.getElementById('slide-a').src=IMGS[0];
+  document.getElementById('slide-a').style.opacity='1';
+  document.getElementById('slide-b').style.opacity='0';
+  setInterval(()=>{
+    sIdx=(sIdx+1)%IMGS.length;
+    const incoming=slotA?'slide-b':'slide-a';
+    const outgoing=slotA?'slide-a':'slide-b';
+    document.getElementById(incoming).src=IMGS[sIdx];
+    document.getElementById(incoming).style.opacity='1';
+    document.getElementById(outgoing).style.opacity='0';
+    slotA=!slotA;
+  },2600);
+}
+ 
+/* ============ TYPEWRITER ============ */
+const MSGS=[
+  "In 2019... we met in the most unexpected way 🎮",
+  "Just two PUBG teammates, nothing serious... 😄",
+  "But slowly, you became my best friend 💖",
+  "We talked about everything. Every little thing. 🌙",
+  "Then came that confusing phase... the situationship 💭",
+  "Not just friends... not yet lovers...",
+  "But somehow, you were already mine ❤️",
+  "And I was already yours... even unsaid ✨",
+  "Time passed... feelings grew deeper and deeper 💞",
+  "And now, in 2026...",
+  "You are not just my best friend anymore...",
+  "You are my person. My love. My everything. 💖",
+  "No matter the distance or the time...",
+  "I choose you. Always. 🌙✨",
+  "Happiest Birthday to You Pakhi. 💖"
+];
+let mIdx=0,cIdx=0,tInterval=null;
+function startTyping(){
+  if(tInterval)clearInterval(tInterval);
+  mIdx=0;cIdx=0;
+  const box=document.getElementById('typing-text');
+  box.innerText='';
+  tInterval=setInterval(()=>{
+    if(cIdx<MSGS[mIdx].length){
+      box.innerText+=MSGS[mIdx][cIdx++];
+    }else{
+      setTimeout(()=>{box.innerText='';cIdx=0;mIdx=(mIdx+1)%MSGS.length;},1500);
+    }
+  },52);
+}
+ 
+/* ============ FIREWORKS ============ */
+let fwTimer=null;
+function launchFireworks(){
+  if(fwTimer)clearInterval(fwTimer);
+  const burst=()=>{
+    const ox=window.innerWidth*0.2+Math.random()*window.innerWidth*0.6;
+    const oy=window.innerHeight*0.1+Math.random()*window.innerHeight*0.5;
+    for(let i=0;i<32;i++){
+      const f=document.createElement('div');
+      f.className='fw';
+      const angle=Math.random()*Math.PI*2;
+      const dist=80+Math.random()*120;
+      f.style.cssText=`background:hsl(${Math.random()*360},100%,72%);left:${ox}px;top:${oy}px;--fx:${Math.cos(angle)*dist}px;--fy:${Math.sin(angle)*dist}px;`;
+      document.body.appendChild(f);
+      setTimeout(()=>f.remove(),1400);
+    }
+  };
+  burst();
+  fwTimer=setInterval(burst,1800);
+}
+ 
+/* ============ LOVE METER ============ */
+function runMeter(){
+  const fill=document.getElementById('meter-fill');
+  const pct=document.getElementById('meter-pct');
+  const lbl=document.getElementById('meter-lbl');
+  const msg=document.getElementById('meter-msg');
+  fill.style.width='0%';pct.innerText='0%';msg.innerText='';
+  const labels=[
+    'Warming up heart scanner... 🔍',
+    'Counting every late night call... 💬',
+    'Measuring years of feelings... 💞',
+    'Calculating infinity... ✨',
+    'Result: off the charts 💖'
+  ];
+  let l=0;
+  const lblTimer=setInterval(()=>{
+    if(l<labels.length){lbl.innerText=labels[l++];}
+    else clearInterval(lblTimer);
+  },650);
+  let w=0;
+  setTimeout(()=>{
+    const grow=setInterval(()=>{
+      w+=1.1;fill.style.width=Math.min(w,100)+'%';
+      pct.innerText=Math.min(Math.round(w),100)+'%';
+      if(w>=100){clearInterval(grow);
+        setTimeout(()=>{pct.innerText='∞';msg.innerText="Way beyond 100%. Love like this doesn't fit on a scale. 💖";},300);
+      }
+    },18);
+  },900);
+}
+ 
+/* ============ MUSIC NOTES ============ */
+function spawnNote(){
+  const el=document.createElement('div');
+  el.className='music-note';
+  el.innerText=['🎵','🎶','♪','♫'][Math.floor(Math.random()*4)];
+  el.style.left=(20+Math.random()*60)+'%';
+  el.style.bottom='60px';
+  el.style.setProperty('--nx',(Math.random()*60-30)+'px');
+  el.style.setProperty('--ny',-(80+Math.random()*60)+'px');
+  el.style.setProperty('--nr',(Math.random()*60-30)+'deg');
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),2600);
+}
+ 
+/* ============ FINAL ============ */
+function end(type){
+  go(13);
+  endHearts();endPetals();
+  setInterval(spawnNote,800);
+  const txt=document.getElementById('finalText');
+  if(type==='abs'){
+    txt.innerText="From PUBG teammates to my forever person, you are my home. Happy Birthday, Pakhi. I love you endlessly. 💖✨";
+  }else{
+    txt.innerText="From 2019 to now, across every mile and every timezone I still choose you every single day. Happy Birthday, Pakhi. 💕";
+  }
+}
+ 
+function endHearts(){
+  const types=['💖','💕','💗','💞','🌸','✨'];
+  setInterval(()=>{
+    const el=document.createElement('div');
+    el.className='floaty';
+    el.innerText=types[Math.floor(Math.random()*types.length)];
+    el.style.left=Math.random()*100+'%';
+    el.style.bottom='0';
+    const dur=3+Math.random()*3;
+    el.style.animationDuration=dur+'s';
+    el.style.fontSize=(14+Math.random()*16)+'px';
+    el.style.setProperty('--r',(Math.random()*60-30)+'deg');
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),(dur+1)*1000);
+  },240);
+}
+function endPetals(){
+  const types=['🌸','🌺','🌷','🌹'];
+  setInterval(()=>{
+    const el=document.createElement('div');
+    el.className='floaty';
+    el.innerText=types[Math.floor(Math.random()*types.length)];
+    el.style.left=Math.random()*100+'%';
+    el.style.bottom='0';
+    const dur=4+Math.random()*3;
+    el.style.animationDuration=dur+'s';
+    el.style.fontSize=(12+Math.random()*10)+'px';
+    el.style.setProperty('--r',(Math.random()*80-40)+'deg');
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),(dur+1)*1000);
+  },300);
+}
+</script>
+</body>
+</html>
+ 

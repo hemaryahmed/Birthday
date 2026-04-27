@@ -303,8 +303,8 @@ html,body{
   background:rgba(255,255,255,0.04);
   position:relative;
 }
-.photo-slot:first-child{grid-column:1/3;height:clamp(130px,36vw,170px);}
-.photo-slot:not(:first-child){height:clamp(90px,24vw,120px);}
+.photo-slot:first-child{grid-column:1/3;height:clamp(150px,40vw,200px);}
+.photo-slot:not(:first-child){height:clamp(150px,40vw,200px);}
 .photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
 .photo-label{
   position:absolute;bottom:0;left:0;right:0;
@@ -473,6 +473,9 @@ video{
   <div class="slideshow">
     <img id="slide-a" src="IMG_1.jpeg" alt="">
     <img id="slide-b" src="IMG_2.jpeg" alt="" style="opacity:0;">
+    <img id="slide-b" src="IMG_3.jpeg" alt="" style="opacity:0;">
+    <img id="slide-b" src="IMG_4.jpeg" alt="" style="opacity:0;">
+    <img id="slide-b" src="IMG_5.jpeg" alt="" style="opacity:0;">
   </div>
   <div class="typing-area"><span id="typing-text"></span><span class="cursor">|</span></div>
   <button class="btn" onclick="go(4)">Next 💫</button>
@@ -572,6 +575,7 @@ video{
       <img src="IMG_1.jpg" alt="our photo">
       <div class="photo-label">Us 💖</div>
     </div>
+    <div class="photo-slot"><img src="IMG_1.jpeg" alt=""><div class="photo-label">US</div></div>
     <div class="photo-slot"><img src="IMG_2.jpeg" alt=""><div class="photo-label">🌙</div></div>
     <div class="photo-slot"><img src="IMG_3.jpeg" alt=""><div class="photo-label">✨</div></div>
     <div class="photo-slot"><img src="IMG_4.jpeg" alt=""><div class="photo-label">💕</div></div>

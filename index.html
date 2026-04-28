@@ -681,16 +681,15 @@ setInterval(spawnFloater, 1400);
 let cur = 's1';
  
 function go(n) {
-  /* পুরানো screen বন্ধ */
   const curEl = document.getElementById(cur);
   if (curEl) curEl.classList.remove('active');
  
-  /* নতুন screen এর id বের করো */
+
   let newId;
   if (typeof n === 'number') {
     newId = 's' + n;
   } else if (n === 'dist') {
-    newId = 's-dist';   // ← FIX: hyphen সহ সঠিক id
+    newId = 's-dist'; 
   } else {
     newId = n;
   }

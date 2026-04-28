@@ -89,7 +89,7 @@ html,body{
   background:linear-gradient(135deg,#ffd700,#ff9de2,#c970ff);
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
- 
+
 /* S1 INTRO */
 #s1{cursor:pointer;}
 .big-emoji{
@@ -114,7 +114,7 @@ html,body{
   animation:hintFade 3s ease 1.5s infinite;
 }
 @keyframes hintFade{0%,100%{opacity:0;}50%{opacity:0.7;}}
- 
+
 /* S2 COUNTDOWN */
 #count-num{
   font-family:'Playfair Display',serif;font-size:clamp(90px,25vw,120px);font-weight:900;
@@ -124,7 +124,7 @@ html,body{
 }
 @keyframes countBounce{from{transform:scale(1.5);opacity:0;}to{transform:scale(1);opacity:1;}}
 .count-sub{font-size:13px;letter-spacing:3px;opacity:0.4;text-transform:uppercase;}
- 
+
 /* S3 NAME */
 .name-letter{
   font-family:'Playfair Display',serif;font-size:clamp(36px,10vw,46px);font-weight:900;
@@ -137,21 +137,28 @@ html,body{
   from{opacity:0;transform:translateY(30px) rotate(-8deg) scale(0.5);}
   to{opacity:1;transform:translateY(0) rotate(0) scale(1);}
 }
+
+/* ── SLIDESHOW:  */
 .slideshow{
-  width:100%;height:clamp(220px,58vw,300px);border-radius:18px;overflow:hidden;
+  width:100%;
+  height:clamp(380px,90vw,500px); 
+  border-radius:18px;overflow:hidden;
   border:1.5px solid rgba(255,100,180,0.3);position:relative;
 }
 .slideshow img{
-  width:100%;height:100%;object-fit:cover;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center center; 
   position:absolute;top:0;left:0;transition:opacity 0.9s ease;
 }
+
 .typing-area{
   font-size:clamp(13px,3.8vw,15px);line-height:1.75;
   color:rgba(255,210,235,0.9);min-height:52px;text-align:center;
 }
 .cursor{display:inline-block;animation:cur 0.75s step-end infinite;}
 @keyframes cur{0%,100%{opacity:1;}50%{opacity:0;}}
- 
+
 /* S4 BDAY */
 .bday-big{
   font-family:'Playfair Display',serif;font-size:clamp(26px,7vw,34px);font-weight:900;
@@ -165,7 +172,7 @@ html,body{
   animation:fwExp 1.3s ease-out forwards;pointer-events:none;z-index:300;
 }
 @keyframes fwExp{to{transform:translate(var(--fx),var(--fy));opacity:0;width:2px;height:2px;}}
- 
+
 /* S5 TIMELINE */
 .tl-item{
   display:flex;gap:14px;align-items:flex-start;
@@ -182,22 +189,32 @@ html,body{
 }
 .tl-year{font-size:11px;color:rgba(255,150,200,0.65);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
 .tl-desc{font-size:clamp(12px,3.5vw,13.5px);line-height:1.65;color:rgba(255,215,240,0.88);}
- 
+
 /* S6 PHOTO GRID */
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
 .photo-slot{
   border-radius:14px;overflow:hidden;border:1.5px solid rgba(255,100,180,0.25);
   background:rgba(255,255,255,0.04);position:relative;
 }
-.photo-slot.full{grid-column:1/3;height:clamp(240px,62vw,320px);}
-.photo-slot.half{height:clamp(200px,54vw,280px);}
-.photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
+.photo-slot.full{
+  grid-column:1/3;
+  height:clamp(360px,95vw,480px);
+}
+.photo-slot.half{
+  height:clamp(280px,75vw,360px); 
+}
+.photo-slot img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
 .photo-label{
   position:absolute;bottom:0;left:0;right:0;
   background:linear-gradient(transparent,rgba(0,0,0,0.6));
   padding:16px 10px 8px;font-size:11px;color:rgba(255,220,240,0.8);text-align:center;
 }
- 
+
 /* S-DIST */
 .dist-map{
   width:100%;max-width:380px;height:220px;border-radius:20px;
@@ -230,7 +247,7 @@ html,body{
 .cartoon-city{font-size:11px;color:rgba(255,180,220,0.8);letter-spacing:0.5px;font-weight:500;}
 .cartoon-flag{font-size:18px;}
 .heart-bridge{font-size:13px;color:rgba(255,210,240,0.8);text-align:center;line-height:1.6;}
- 
+
 /* S7 LETTER */
 .letter-paper{
   background:linear-gradient(135deg,rgba(255,77,166,0.08),rgba(201,112,255,0.08));
@@ -244,7 +261,7 @@ html,body{
 .letter-salutation{font-family:'Playfair Display',serif;font-size:17px;font-weight:700;margin-bottom:12px;color:rgba(255,180,220,1);}
 .letter-body{font-size:clamp(12.5px,3.6vw,14px);line-height:1.8;color:rgba(255,215,240,0.88);}
 .letter-sign{font-family:'Playfair Display',serif;font-size:15px;margin-top:14px;color:rgba(255,150,200,0.9);font-style:italic;}
- 
+
 /* S8 WISHES */
 .wish-card{
   background:rgba(255,255,255,0.05);border:1px solid rgba(255,100,180,0.15);
@@ -255,18 +272,16 @@ html,body{
 .wish-icon-wrap{width:38px;height:38px;min-width:38px;border-radius:50%;background:rgba(255,77,166,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;}
 .wish-title{font-size:13px;font-weight:500;color:rgba(255,180,220,0.9);}
 .wish-body{font-size:clamp(12px,3.4vw,13px);line-height:1.7;color:rgba(255,215,240,0.82);}
- 
+
 /* S9 VIDEO */
-.video-placeholder{
-  width:100%;border-radius:16px;overflow:hidden;
+video{
+  width:100%;border-radius:16px;
+  max-height:340px;
   border:1.5px solid rgba(255,100,180,0.25);
-  background:rgba(255,255,255,0.04);
-  min-height:180px;display:flex;align-items:center;
-  justify-content:center;flex-direction:column;gap:10px;padding:24px;
-  text-align:center;
+  display:block;
+  background:#000;
 }
-video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255,100,180,0.25);display:block;}
- 
+
 /* S10 PROMISES */
 .promise{
   display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,0.04);
@@ -276,7 +291,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
 .promise:last-child{margin-bottom:0;}
 .pr-icon{font-size:20px;min-width:26px;line-height:1.4;}
 .pr-text{font-size:clamp(12px,3.4vw,13px);line-height:1.65;color:rgba(255,215,240,0.88);}
- 
+
 /* S11 METER */
 .meter-track{width:100%;height:18px;border-radius:20px;background:rgba(255,255,255,0.1);overflow:hidden;margin:12px 0;}
 .meter-fill{
@@ -291,11 +306,11 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
 .meter-label{font-size:13px;color:rgba(255,180,220,0.7);letter-spacing:0.5px;min-height:20px;}
- 
+
 /* S12 QUESTION */
 .question-emoji{font-size:56px;line-height:1;animation:wobble 2s ease-in-out infinite;}
 @keyframes wobble{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
- 
+
 /* S13 FINAL */
 .final-card{
   background:linear-gradient(135deg,rgba(255,77,166,0.12),rgba(201,112,255,0.12));
@@ -315,18 +330,18 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
 </style>
 </head>
 <body>
- 
+
 <canvas id="bg-canvas"></canvas>
 <div class="aurora">
   <div class="aurora-blob ab1"></div>
   <div class="aurora-blob ab2"></div>
   <div class="aurora-blob ab3"></div>
 </div>
- 
+
 <audio id="song" src="YOUR_SONG.mpeg" loop></audio>
- 
+
 <div id="app">
- 
+
 <!-- S1: INTRO -->
 <div class="screen active" id="s1" onclick="startCountdown()">
   <div class="intro-wrap">
@@ -338,13 +353,13 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   <div class="title" style="margin-top:8px;">Something magical<br>is waiting for you</div>
   <p class="tap-hint">✨ tap anywhere ✨</p>
 </div>
- 
+
 <!-- S2: COUNTDOWN -->
 <div class="screen" id="s2">
   <p class="count-sub">get ready...</p>
   <div id="count-num">3</div>
 </div>
- 
+
 <!-- S3: NAME + SLIDESHOW -->
 <div class="screen" id="s3">
   <div id="namebox" style="letter-spacing:4px;"></div>
@@ -355,7 +370,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   <div class="typing-area"><span id="typing-text"></span><span class="cursor">|</span></div>
   <button class="btn" onclick="go(4)">Next 💫</button>
 </div>
- 
+
 <!-- S4: HAPPY BIRTHDAY -->
 <div class="screen" id="s4">
   <div class="card" style="text-align:center;">
@@ -366,7 +381,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go(5)">Our Story 💌</button>
 </div>
- 
+
 <!-- S5: TIMELINE -->
 <div class="screen" id="s5">
   <div class="title grad" style="margin-bottom:2px;">Our Story 💌</div>
@@ -432,7 +447,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go(6)">Our Photos 📸</button>
 </div>
- 
+
 <!-- S6: PHOTO MEMORIES -->
 <div class="screen" id="s6">
   <div class="title grad" style="margin-bottom:2px;">Moments I Treasure 📸</div>
@@ -448,12 +463,12 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go('dist')">The Distance 🌍</button>
 </div>
- 
+
 <!-- S-DIST: DISTANCE ANIMATION PAGE -->
 <div class="screen" id="s-dist">
   <div class="title grad" style="margin-bottom:2px;">8,661 km Apart 🌍</div>
   <p class="sub" style="margin-bottom:4px;">But every heartbeat reaches you</p>
- 
+
   <div class="dist-map" id="dist-map">
     <svg viewBox="0 0 380 220" preserveAspectRatio="xMidYMid meet" style="position:absolute;top:0;left:0;width:100%;height:100%;">
       <line x1="0" y1="110" x2="380" y2="110" stroke="rgba(255,100,180,0.08)" stroke-width="1"/>
@@ -471,7 +486,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
     <div class="city-dot" style="left:81%;top:55%;"></div>
     <div class="city-label" style="left:81%;top:65%;">🇧🇩 Dhaka</div>
   </div>
- 
+
   <div class="cartoon-wrap">
     <div class="cartoon-boy">
       <div class="cartoon-figure">👨‍💻</div>
@@ -489,15 +504,15 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
       <div class="cartoon-city">Hemary</div>
     </div>
   </div>
- 
+
   <div class="heart-bridge">
     Every night I look at the same sky ✨<br>
     and whisper your name across the distance 🌙
   </div>
- 
+
   <button class="btn" onclick="go(7)">A Letter for You 💌</button>
 </div>
- 
+
 <!-- S7: LOVE LETTER -->
 <div class="screen" id="s7">
   <div class="title grad" style="margin-bottom:2px;">A Letter for You 💌</div>
@@ -517,7 +532,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go(8)">Across Every Mile 🌍</button>
 </div>
- 
+
 <!-- S8: LONG DISTANCE -->
 <div class="screen" id="s8">
   <div class="title grad" style="margin-bottom:2px;">Across Every Mile 🌍</div>
@@ -560,26 +575,21 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go(9)">Our Video 🎥</button>
 </div>
- 
-<!-- S9: VIDEO -->
+
+<!-- S9: VIDEO — fixed, clean -->
 <div class="screen" id="s9">
   <div class="title grad" style="margin-bottom:2px;">Our Memories 🎥</div>
   <p class="sub" style="margin-bottom:8px;">Every frame, a feeling 💕</p>
- 
-  <div id="video-container" style="width:100%;">
 
-    <div class="video-placeholder">
-      <div style="font-size:40px;">🎬</div>
-      <p style="font-size:14px;color:rgba(255,180,220,0.85);line-height:1.7;">
-       <br>
-         <video controls playsinline preload="metadata" src="YOUR_VIDEO.mp3" style="width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255,100,180,0.25);display:block;"></video>
-      </p>
-    </div>
-  </div>
- 
+  <video controls playsinline preload="metadata" src="YOUR_VIDEO.mp3">
+    Your browser does not support the video tag.
+  </video>
+
+  <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;text-align:center;color:rgba(255,180,220,0.95);letter-spacing:1px;">✨ Our Best Moments ✨</p>
+
   <button class="btn" onclick="go(10)">My Promises 🤝</button>
 </div>
- 
+
 <!-- S10: PROMISES -->
 <div class="screen" id="s10">
   <div class="title grad" style="margin-bottom:2px;">I Promise You 🤝</div>
@@ -595,7 +605,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go(11)">Love Meter 💘</button>
 </div>
- 
+
 <!-- S11: LOVE METER -->
 <div class="screen" id="s11">
   <div class="card" style="text-align:center;width:100%;">
@@ -608,7 +618,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
   </div>
   <button class="btn" onclick="go(12)">One last thing... 👀</button>
 </div>
- 
+
 <!-- S12: QUESTION -->
 <div class="screen" id="s12">
   <div class="question-emoji">👀</div>
@@ -621,7 +631,7 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
     </div>
   </div>
 </div>
- 
+
 <!-- S13: FINAL -->
 <div class="screen" id="s13">
   <div class="final-card" style="width:100%;">
@@ -631,9 +641,9 @@ video{width:100%;border-radius:16px;max-height:280px;border:1.5px solid rgba(255
     <p class="final-from">From Your Hemary 🌙</p>
   </div>
 </div>
- 
+
 </div><!-- #app -->
- 
+
 <script>
 /* ── STARFIELD ── */
 const c = document.getElementById('bg-canvas');
@@ -658,7 +668,7 @@ function drawStars() {
 }
 initStars(); drawStars();
 window.addEventListener('resize', initStars);
- 
+
 /* ── FLOATERS ── */
 const FLOATERS = ['🌸','✨','💫','🌙','⭐','💕','🌷','🎀','🌺','💞'];
 function spawnFloater() {
@@ -676,47 +686,43 @@ function spawnFloater() {
 }
 for (let i = 0; i < 6; i++) setTimeout(spawnFloater, i*500);
 setInterval(spawnFloater, 1400);
- 
+
 /* ── NAV ── */
 let cur = 's1';
- 
+
 function go(n) {
   const curEl = document.getElementById(cur);
   if (curEl) curEl.classList.remove('active');
- 
 
   let newId;
   if (typeof n === 'number') {
     newId = 's' + n;
   } else if (n === 'dist') {
-    newId = 's-dist'; 
+    newId = 's-dist';
   } else {
     newId = n;
   }
- 
+
   cur = newId;
   const el = document.getElementById(newId);
   if (!el) { console.error('Screen not found:', newId); return; }
- 
-  /* animation restart */
+
   el.style.animation = 'none';
   void el.offsetWidth;
   el.style.animation = '';
   el.classList.add('active');
- 
-  /* screen-specific hooks */
+
   if (n === 3)  { nameAnim(); startSlideshow(); startTyping(); }
   if (n === 4)  { launchFireworks(); }
   if (n === 11) { runMeter(); }
 }
- 
+
 /* ── COUNTDOWN ── */
 function startCountdown() {
   document.getElementById('s1').classList.remove('active');
   cur = 's2';
   document.getElementById('s2').classList.add('active');
- 
-  /* audio fade-in */
+
   const audio = document.getElementById('song');
   audio.volume = 0;
   audio.play().catch(() => {});
@@ -726,8 +732,7 @@ function startCountdown() {
     audio.volume = vol;
     if (vol >= 1) clearInterval(fadeIn);
   }, 80);
- 
-  /* 3-2-1 */
+
   let num = 3;
   const el = document.getElementById('count-num');
   const tick = () => {
@@ -741,7 +746,7 @@ function startCountdown() {
   };
   setTimeout(tick, 1000);
 }
- 
+
 /* ── NAME ANIMATION ── */
 function nameAnim() {
   const name = 'Happy Birthday Tonmoy';
@@ -755,7 +760,7 @@ function nameAnim() {
     box.appendChild(s);
   });
 }
- 
+
 /* ── SLIDESHOW ── */
 const IMGS = ['IMG_1.jpeg','IMG_2.jpeg','IMG_3.jpeg','IMG_4.jpeg','IMG_5.jpeg'];
 let sIdx = 0, slotA = true, slideTimer = null;
@@ -775,7 +780,7 @@ function startSlideshow() {
     slotA = !slotA;
   }, 2600);
 }
- 
+
 /* ── TYPEWRITER ── */
 const MSGS = [
   "In 2019... we met in the most unexpected way 🎮",
@@ -808,7 +813,7 @@ function startTyping() {
     }
   }, 52);
 }
- 
+
 /* ── FIREWORKS ── */
 let fwTimer = null;
 function launchFireworks() {
@@ -829,7 +834,7 @@ function launchFireworks() {
   burst();
   fwTimer = setInterval(burst, 1800);
 }
- 
+
 /* ── LOVE METER ── */
 function runMeter() {
   const fill = document.getElementById('meter-fill');
@@ -864,7 +869,7 @@ function runMeter() {
     }, 18);
   }, 900);
 }
- 
+
 /* ── MUSIC NOTES ── */
 function spawnNote() {
   const el = document.createElement('div');
@@ -878,7 +883,7 @@ function spawnNote() {
   document.body.appendChild(el);
   setTimeout(() => el.remove(), 2600);
 }
- 
+
 /* ── FINAL ── */
 function end(type) {
   go(13);
@@ -886,12 +891,12 @@ function end(type) {
   setInterval(spawnNote, 800);
   const txt = document.getElementById('finalText');
   if (type === 'abs') {
-    txt.innerText = "From PUBG teammates to my forever person — you are my home. Happy Birthday, Pakhi. I love you endlessly. 💖✨";
+    txt.innerText = "From a random person to PUBG teammates to my forever person  you are my home. Happy Birthday, Pakhi. I love you endlessly. 💖✨";
   } else {
-    txt.innerText = "From 2019 to now, across every mile and every timezone — I still choose you every single day. Happy Birthday, Pakhi. 💕";
+    txt.innerText = "From 2019 to now, across every mile and every timezone I still choose you every single day. Happy Birthday, Pakhi. 💕";
   }
 }
- 
+
 function endHearts() {
   const types = ['💖','💕','💗','💞','🌸','✨'];
   setInterval(() => {
@@ -908,7 +913,7 @@ function endHearts() {
     setTimeout(() => el.remove(), (dur+1)*1000);
   }, 240);
 }
- 
+
 function endPetals() {
   const types = ['🌸','🌺','🌷','🌹'];
   setInterval(() => {
@@ -927,4 +932,4 @@ function endPetals() {
 }
 </script>
 </body>
-</html
+</html>

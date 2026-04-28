@@ -28,14 +28,12 @@ html,body{
   touch-action:manipulation;
 }
  
-/* CANVAS BG */
 #bg-canvas{
   position:fixed;inset:0;
   width:100%;height:100%;
   z-index:0;pointer-events:none;
 }
  
-/* AURORA */
 .aurora{
   position:fixed;inset:0;z-index:1;pointer-events:none;
   overflow:hidden;
@@ -54,7 +52,6 @@ html,body{
   66%{transform:translate(-20px,15px) scale(0.95);}
 }
  
-/* FLOATING EMOJIS */
 .floater{
   position:fixed;z-index:2;pointer-events:none;
   animation:floatRise linear infinite;
@@ -67,7 +64,6 @@ html,body{
   100%{transform:translateY(-8vh) rotate(var(--rot,20deg));opacity:0;}
 }
  
-/* APP SHELL */
 #app{
   position:fixed;inset:0;
   display:flex;justify-content:center;align-items:center;
@@ -76,7 +72,6 @@ html,body{
   overflow:hidden;
 }
  
-/* SCREENS */
 .screen{
   display:none;
   flex-direction:column;
@@ -94,7 +89,6 @@ html,body{
   to{opacity:1;transform:scale(1) translateY(0);}
 }
  
-/* GLASS CARD */
 .card{
   background:var(--glass);
   border:1px solid var(--border);
@@ -105,7 +99,6 @@ html,body{
   -webkit-backdrop-filter:blur(16px);
 }
  
-/* SCROLL CARD */
 .card-scroll{
   max-height:52vh;
   overflow-y:auto;
@@ -115,7 +108,6 @@ html,body{
 }
 .card-scroll::-webkit-scrollbar{display:none;}
  
-/* BTN */
 .btn{
   padding:13px 30px;
   border:1.5px solid rgba(255,100,180,0.5);
@@ -137,7 +129,6 @@ html,body{
  
 .btn-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
  
-/* TITLES */
 .title{
   font-family:'Playfair Display',serif;
   font-size:clamp(20px,5.5vw,26px);
@@ -147,7 +138,6 @@ html,body{
 }
 .sub{font-size:clamp(12px,3.5vw,14px);opacity:0.75;line-height:1.65;text-align:center;}
  
-/* GRADIENT TEXT */
 .grad{
   background:linear-gradient(135deg,#ff4da6,#c970ff,#ff9de2);
   -webkit-background-clip:text;background-clip:text;
@@ -159,7 +149,7 @@ html,body{
   -webkit-text-fill-color:transparent;
 }
  
-/* ===== S1 INTRO ===== */
+/* S1 INTRO */
 #s1{cursor:pointer;}
 .big-emoji{
   font-size:72px;line-height:1;
@@ -194,7 +184,7 @@ html,body{
 }
 @keyframes hintFade{0%,100%{opacity:0;}50%{opacity:0.7;}}
  
-/* ===== S2 COUNTDOWN ===== */
+/* S2 COUNTDOWN */
 #count-num{
   font-family:'Playfair Display',serif;
   font-size:clamp(90px,25vw,120px);
@@ -208,7 +198,7 @@ html,body{
 @keyframes countBounce{from{transform:scale(1.5);opacity:0;}to{transform:scale(1);opacity:1;}}
 .count-sub{font-size:13px;letter-spacing:3px;opacity:0.4;text-transform:uppercase;}
  
-/* ===== S3 NAME ===== */
+/* S3 NAME */
 .name-letter{
   font-family:'Playfair Display',serif;
   font-size:clamp(36px,10vw,46px);
@@ -226,7 +216,7 @@ html,body{
 }
 .slideshow{
   width:100%;
-  height:clamp(160px,42vw,210px);
+  height:clamp(200px,52vw,260px);
   border-radius:18px;overflow:hidden;
   border:1.5px solid rgba(255,100,180,0.3);
   position:relative;
@@ -246,7 +236,7 @@ html,body{
 .cursor{display:inline-block;animation:cur 0.75s step-end infinite;}
 @keyframes cur{0%,100%{opacity:1;}50%{opacity:0;}}
  
-/* ===== S4 BDAY ===== */
+/* S4 BDAY */
 .bday-big{
   font-family:'Playfair Display',serif;
   font-size:clamp(26px,7vw,34px);
@@ -260,7 +250,6 @@ html,body{
 }
 @keyframes shimmer{0%{background-position:0%;}100%{background-position:200%;}}
  
-/* FIREWORK */
 .fw{
   position:fixed;
   width:6px;height:6px;border-radius:50%;
@@ -269,7 +258,7 @@ html,body{
 }
 @keyframes fwExp{to{transform:translate(var(--fx),var(--fy));opacity:0;width:2px;height:2px;}}
  
-/* ===== S5 TIMELINE ===== */
+/* S5 TIMELINE */
 .tl-item{
   display:flex;gap:14px;align-items:flex-start;
   padding-bottom:18px;margin-bottom:2px;
@@ -290,11 +279,10 @@ html,body{
 .tl-year{font-size:11px;color:rgba(255,150,200,0.65);letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;}
 .tl-desc{font-size:clamp(12px,3.5vw,13.5px);line-height:1.65;color:rgba(255,215,240,0.88);}
  
-/* ===== S6 PHOTO GRID ===== */
+/* S6 PHOTO GRID */
 .photo-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  grid-template-rows:auto auto auto;
   gap:8px;width:100%;
 }
 .photo-slot{
@@ -303,9 +291,9 @@ html,body{
   background:rgba(255,255,255,0.04);
   position:relative;
 }
-.photo-slot:first-child{grid-column:1/3;height:clamp(150px,40vw,200px);}
-.photo-slot:not(:first-child){height:clamp(150px,40vw,200px);}
-.photo-slot img{width:100%;height:100%;object-fit:cover;display:block;}
+.photo-slot.full{grid-column:1/3;height:clamp(200px,52vw,260px);}
+.photo-slot.half{height:clamp(160px,44vw,220px);}
+.photo-slot img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;}
 .photo-label{
   position:absolute;bottom:0;left:0;right:0;
   background:linear-gradient(transparent,rgba(0,0,0,0.6));
@@ -314,7 +302,7 @@ html,body{
   text-align:center;
 }
  
-/* ===== S7 LETTER PAGE ===== */
+/* S7 LETTER */
 .letter-paper{
   background:linear-gradient(135deg,rgba(255,77,166,0.08),rgba(201,112,255,0.08));
   border:1px solid rgba(255,100,180,0.2);
@@ -331,7 +319,7 @@ html,body{
 .letter-body{font-size:clamp(12.5px,3.6vw,14px);line-height:1.8;color:rgba(255,215,240,0.88);}
 .letter-sign{font-family:'Playfair Display',serif;font-size:15px;margin-top:14px;color:rgba(255,150,200,0.9);font-style:italic;}
  
-/* ===== S8 DISTANCE WISHES ===== */
+/* S8 DISTANCE WISHES */
 .wish-card{
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,100,180,0.15);
@@ -347,14 +335,161 @@ html,body{
 }
 .wish-title{font-size:13px;font-weight:500;color:rgba(255,180,220,0.9);}
 .wish-body{font-size:clamp(12px,3.4vw,13px);line-height:1.7;color:rgba(255,215,240,0.82);}
- 
-/* ===== S9 MEMORIES (VIDEO) ===== */
+
+/* ===== S_DISTANCE ANIMATION PAGE ===== */
+#s-dist{
+  position:relative;
+  overflow:hidden;
+}
+.dist-map{
+  width:100%;
+  max-width:380px;
+  height:220px;
+  border-radius:20px;
+  background:linear-gradient(135deg,rgba(8,0,40,0.9),rgba(20,0,60,0.9));
+  border:1.5px solid rgba(255,100,180,0.3);
+  position:relative;
+  overflow:hidden;
+}
+.dist-map svg{width:100%;height:100%;}
+/* city dots */
+.city-dot{
+  position:absolute;
+  width:10px;height:10px;border-radius:50%;
+  background:#ff4da6;
+  box-shadow:0 0 12px rgba(255,77,166,0.8);
+  transform:translate(-50%,-50%);
+}
+.city-dot::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  border:1.5px solid rgba(255,77,166,0.5);
+  animation:cityPulse 1.5s ease-out infinite;
+}
+@keyframes cityPulse{0%{transform:scale(1);opacity:0.8;}100%{transform:scale(2.5);opacity:0;}}
+.city-dot.spain{background:#c970ff;box-shadow:0 0 12px rgba(201,112,255,0.8);}
+.city-dot.spain::after{border-color:rgba(201,112,255,0.5);}
+
+.city-label{
+  position:absolute;
+  font-size:10px;
+  color:rgba(255,220,240,0.9);
+  letter-spacing:0.5px;
+  white-space:nowrap;
+  transform:translateX(-50%);
+  text-shadow:0 0 8px rgba(255,77,166,0.6);
+}
+
+/* flight path */
+.flight-path{
+  position:absolute;
+  top:0;left:0;width:100%;height:100%;
+  pointer-events:none;
+}
+
+/* airplane */
+.airplane{
+  position:absolute;
+  font-size:22px;
+  filter:drop-shadow(0 0 8px rgba(255,215,0,0.8));
+  animation:flyPath 4s ease-in-out infinite;
+  transform-origin:center;
+  top:50%;left:20%;
+}
+@keyframes flyPath{
+  0%{left:18%;top:62%;transform:rotate(-35deg) scale(1);}
+  25%{left:35%;top:35%;transform:rotate(-25deg) scale(1.1);}
+  50%{left:55%;top:22%;transform:rotate(-15deg) scale(1.15);}
+  75%{left:72%;top:35%;transform:rotate(5deg) scale(1.1);}
+  100%{left:78%;top:55%;transform:rotate(20deg) scale(1);}
+}
+
+/* cartoon characters */
+.cartoon-wrap{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  width:100%;
+  padding:0 10px;
+}
+.cartoon-boy,.cartoon-girl{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.cartoon-figure{
+  font-size:52px;
+  animation:cartoonBob 2s ease-in-out infinite;
+  filter:drop-shadow(0 4px 12px rgba(255,77,166,0.4));
+}
+.cartoon-boy .cartoon-figure{animation-delay:0.3s;}
+@keyframes cartoonBob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-6px);}
+}
+.cartoon-city{
+  font-size:11px;
+  color:rgba(255,180,220,0.8);
+  letter-spacing:0.5px;
+  font-weight:500;
+}
+.cartoon-flag{font-size:18px;}
+
+.dist-km{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,6vw,28px);
+  font-weight:900;
+  background:linear-gradient(135deg,#ffd700,#ff4da6);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-align:center;
+}
+.dist-sub{
+  font-size:12px;
+  color:rgba(255,180,220,0.65);
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  text-align:center;
+}
+.heart-bridge{
+  font-size:13px;
+  color:rgba(255,210,240,0.8);
+  text-align:center;
+  line-height:1.6;
+}
+
+/* click to fly */
+.fly-btn{
+  cursor:pointer;
+  padding:10px 24px;
+  border:1.5px solid rgba(255,215,0,0.4);
+  border-radius:50px;
+  background:rgba(255,215,0,0.1);
+  color:rgba(255,230,150,0.9);
+  font-size:13px;
+  font-family:'DM Sans',sans-serif;
+  transition:all 0.2s;
+  display:flex;align-items:center;gap:6px;
+}
+.fly-btn:active{transform:scale(0.95);}
+
+/* landing animation */
+.landing-burst{
+  position:absolute;
+  pointer-events:none;
+  font-size:20px;
+  animation:burstUp 1.5s ease-out forwards;
+}
+@keyframes burstUp{
+  0%{transform:translate(-50%,-50%) scale(0);opacity:1;}
+  50%{transform:translate(-50%,-80%) scale(1.2);opacity:1;}
+  100%{transform:translate(-50%,-120%) scale(0.8);opacity:0;}
+}
+
+/* S9 VIDEO */
 video{
   width:100%;border-radius:16px;max-height:240px;
   border:1.5px solid rgba(255,100,180,0.25);display:block;
 }
  
-/* ===== S10 PROMISES ===== */
+/* S10 PROMISES */
 .promise{
   display:flex;align-items:flex-start;gap:12px;
   background:rgba(255,255,255,0.04);
@@ -366,7 +501,7 @@ video{
 .pr-icon{font-size:20px;min-width:26px;line-height:1.4;}
 .pr-text{font-size:clamp(12px,3.4vw,13px);line-height:1.65;color:rgba(255,215,240,0.88);}
  
-/* ===== S11 METER ===== */
+/* S11 METER */
 .meter-track{
   width:100%;height:18px;border-radius:20px;
   background:rgba(255,255,255,0.1);overflow:hidden;margin:12px 0;
@@ -388,14 +523,14 @@ video{
 }
 .meter-label{font-size:13px;color:rgba(255,180,220,0.7);letter-spacing:0.5px;min-height:20px;}
  
-/* ===== S12 QUESTION ===== */
+/* S12 QUESTION */
 .question-emoji{
   font-size:56px;line-height:1;
   animation:wobble 2s ease-in-out infinite;
 }
 @keyframes wobble{0%,100%{transform:rotate(-8deg);}50%{transform:rotate(8deg);}}
  
-/* ===== S13 FINAL ===== */
+/* S13 FINAL */
 .final-card{
   background:linear-gradient(135deg,rgba(255,77,166,0.12),rgba(201,112,255,0.12));
   border:1px solid rgba(255,100,180,0.25);
@@ -413,7 +548,6 @@ video{
 }
 .final-from{font-size:12px;opacity:0.55;letter-spacing:1px;text-transform:uppercase;}
  
-/* HEARTS/PETALS FINAL */
 .floaty{
   position:fixed;pointer-events:none;z-index:200;
   animation:floatUp2 linear forwards;
@@ -424,7 +558,6 @@ video{
   100%{transform:translateY(-110vh) rotate(var(--r,30deg));opacity:0;}
 }
  
-/* MUSIC NOTE */
 .music-note{
   position:fixed;z-index:200;pointer-events:none;
   font-size:18px;opacity:0;
@@ -445,7 +578,7 @@ video{
   <div class="aurora-blob ab3"></div>
 </div>
  
-<audio id="song" src="YOUR_SONG.mpeg" loop></audio>
+<audio id="song" src="YOUR_SONG.mp3" loop></audio>
  
 <div id="app">
  
@@ -473,9 +606,6 @@ video{
   <div class="slideshow">
     <img id="slide-a" src="IMG_1.jpeg" alt="">
     <img id="slide-b" src="IMG_2.jpeg" alt="" style="opacity:0;">
-    <img id="slide-b" src="IMG_3.jpeg" alt="" style="opacity:0;">
-    <img id="slide-b" src="IMG_4.jpeg" alt="" style="opacity:0;">
-    <img id="slide-b" src="IMG_5.jpeg" alt="" style="opacity:0;">
   </div>
   <div class="typing-area"><span id="typing-text"></span><span class="cursor">|</span></div>
   <button class="btn" onclick="go(4)">Next 💫</button>
@@ -497,7 +627,6 @@ video{
   <div class="title grad" style="margin-bottom:2px;">Our Story 💌</div>
   <div class="card card-scroll">
     <div style="padding-left:8px;">
- 
       <div class="tl-item">
         <div class="tl-dot">🎮</div>
         <div>
@@ -505,7 +634,6 @@ video{
           <div class="tl-desc">Two strangers, same group chat then same PUNG lobby. I had no idea that one random conversation and match would change everything forever.</div>
         </div>
       </div>
- 
       <div class="tl-item">
         <div class="tl-dot">💬</div>
         <div>
@@ -513,7 +641,6 @@ video{
           <div class="tl-desc">Late night calls, playing PUBG together, laughing about absolutely nothing. We became each other's favorite people without even noticing.</div>
         </div>
       </div>
- 
       <div class="tl-item">
         <div class="tl-dot">💭</div>
         <div>
@@ -521,23 +648,20 @@ video{
           <div class="tl-desc">Distance after confessing, our little situationship. Not quite friends, not yet lovers. But you were already mine and I was already yours, even if we didn't say it.</div>
         </div>
       </div>
-
-            <div class="tl-item">
+      <div class="tl-item">
         <div class="tl-dot">💕</div>
         <div>
           <div class="tl-year">The Being together again phase</div>
           <div class="tl-desc">Suddenly coming back to my life, again late night calls, laughing about absolutely nothing to falling in love with each other once again without even noticing...</div>
         </div>
       </div>
- 
-                  <div class="tl-item">
+      <div class="tl-item">
         <div class="tl-dot">💝</div>
         <div>
           <div class="tl-year">Dating without even knowing Phase</div>
-          <div class="tl-desc">2023… the most beautiful year of our lives… going on regular dates, rickshaw rides around TSC, walking together at night holding hands, getting lost in each other’s eyes, and so many more little moments like these…</div>
+          <div class="tl-desc">2023… the most beautiful year of our lives… going on regular dates, rickshaw rides around TSC, walking together at night holding hands, getting lost in each other's eyes, and so many more little moments like these…</div>
         </div>
       </div>
- 
       <div class="tl-item">
         <div class="tl-dot">✈️</div>
         <div>
@@ -545,15 +669,13 @@ video{
           <div class="tl-desc">Since 02 January 2024. Miles between us. Different time zones. But somehow that never made me love you less it just made me miss you more.</div>
         </div>
       </div>
- 
       <div class="tl-item">
         <div class="tl-dot">❤️</div>
         <div>
           <div class="tl-year">2026</div>
-          <div class="tl-desc">Still doing long distance and falling in love with you more and more everyday and praying that someday we will be together again. </div>
+          <div class="tl-desc">Still doing long distance and falling in love with you more and more everyday and praying that someday we will be together again.</div>
         </div>
       </div>
- 
       <div class="tl-item">
         <div class="tl-dot">🌙</div>
         <div>
@@ -561,7 +683,6 @@ video{
           <div class="tl-desc">My person. My safe place. My home. No matter how far apart we are or where life takes us next.</div>
         </div>
       </div>
- 
     </div>
   </div>
   <button class="btn" onclick="go(6)">Our Photos 📸</button>
@@ -571,16 +692,74 @@ video{
 <div class="screen" id="s6">
   <div class="title grad" style="margin-bottom:2px;">Moments I Treasure 📸</div>
   <div class="photo-grid">
-    <div class="photo-slot" style="grid-column:1/3;">
-      <img src="IMG_1.jpg" alt="our photo">
+    <div class="photo-slot full">
+      <img src="IMG_1.jpeg" alt="our photo">
       <div class="photo-label">Us 💖</div>
     </div>
-    <div class="photo-slot"><img src="IMG_1.jpeg" alt=""><div class="photo-label">US</div></div>
-    <div class="photo-slot"><img src="IMG_2.jpeg" alt=""><div class="photo-label">🌙</div></div>
-    <div class="photo-slot"><img src="IMG_3.jpeg" alt=""><div class="photo-label">✨</div></div>
-    <div class="photo-slot"><img src="IMG_4.jpeg" alt=""><div class="photo-label">💕</div></div>
-    <div class="photo-slot"><img src="IMG_5.jpeg" alt=""><div class="photo-label">🌸</div></div>
+    <div class="photo-slot half"><img src="IMG_2.jpeg" alt=""><div class="photo-label">🌙</div></div>
+    <div class="photo-slot half"><img src="IMG_3.jpeg" alt=""><div class="photo-label">✨</div></div>
+    <div class="photo-slot half"><img src="IMG_4.jpeg" alt=""><div class="photo-label">💕</div></div>
+    <div class="photo-slot half"><img src="IMG_5.jpeg" alt=""><div class="photo-label">🌸</div></div>
   </div>
+  <button class="btn" onclick="go('dist')">A Letter for You 💌</button>
+</div>
+
+<!-- S-DIST: DISTANCE ANIMATION PAGE -->
+<div class="screen" id="s-dist">
+  <div class="title grad" style="margin-bottom:2px;">8,661 km Apart 🌍</div>
+  <p class="sub" style="margin-bottom:4px;">But every heartbeat reaches you</p>
+
+  <!-- Map with flight animation -->
+  <div class="dist-map" id="dist-map">
+    <!-- SVG curved path -->
+    <svg viewBox="0 0 380 220" preserveAspectRatio="xMidYMid meet" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+      <!-- subtle grid lines -->
+      <line x1="0" y1="110" x2="380" y2="110" stroke="rgba(255,100,180,0.08)" stroke-width="1"/>
+      <line x1="190" y1="0" x2="190" y2="220" stroke="rgba(255,100,180,0.08)" stroke-width="1"/>
+      <!-- dashed flight arc -->
+      <path id="flightArc" d="M 72 135 Q 190 30 308 120" fill="none" stroke="rgba(255,180,220,0.25)" stroke-width="1.5" stroke-dasharray="6,5"/>
+      <!-- animated plane on path -->
+      <text font-size="18" id="planeSvg" style="filter:drop-shadow(0 0 6px rgba(255,215,0,0.8));">
+        <animateMotion dur="3.5s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#flightArc"/>
+        </animateMotion>
+        ✈️
+      </text>
+    </svg>
+
+    <!-- Spain dot -->
+    <div class="city-dot spain" style="left:19%;top:62%;"></div>
+    <div class="city-label" style="left:19%;top:72%;">🇪🇸 Spain</div>
+
+    <!-- Bangladesh dot -->
+    <div class="city-dot" style="left:81%;top:55%;"></div>
+    <div class="city-label" style="left:81%;top:65%;">🇧🇩 Dhaka</div>
+  </div>
+
+  <!-- Cartoon characters -->
+  <div class="cartoon-wrap">
+    <div class="cartoon-boy">
+      <div class="cartoon-figure">👨‍💻</div>
+      <div class="cartoon-flag">🇪🇸</div>
+      <div class="cartoon-city">Hemary</div>
+    </div>
+    <div style="text-align:center;flex:1;">
+      <div style="font-size:11px;color:rgba(255,180,220,0.6);letter-spacing:1px;">— 8,661 km —</div>
+      <div style="font-size:18px;margin:4px 0;">💕</div>
+      <div style="font-size:11px;color:rgba(255,180,220,0.6);">but same heart</div>
+    </div>
+    <div class="cartoon-girl">
+      <div class="cartoon-figure">👩‍❤️‍👨</div>
+      <div class="cartoon-flag">🇧🇩</div>
+      <div class="cartoon-city">Pakhi</div>
+    </div>
+  </div>
+
+  <div class="heart-bridge">
+    Every night I look at the same sky ✨<br>
+    and whisper your name across the distance 🌙
+  </div>
+
   <button class="btn" onclick="go(7)">A Letter for You 💌</button>
 </div>
  
@@ -592,7 +771,7 @@ video{
       <div class="letter-salutation">My dearest Tonmoy Pakhi,</div>
       <div class="letter-body">
         Happy Birthday, love. 🎂<br><br>
-        I've been trying to find the perfect words for days and honestly? There aren't any. Because what I feel for you is so much bigger than words and it's hard to describe too. <br><br>
+        I've been trying to find the perfect words for days and honestly? There aren't any. Because what I feel for you is so much bigger than words and it's hard to describe too.<br><br>
         From the day we first talked in group chat to the evening we played PUBG together, to every late night call, every deep conversation, every "good morning" across different time zones you have been my constant. My favorite chapter in a story I never expected to write.<br><br>
         The distance is hard. Some nights it feels impossible. But then you text me something silly and I remember this is worth every single kilometers between us.<br><br>
         You make everything better just by existing. You are kind and chaotic and beautiful and completely, utterly mine.<br><br>
@@ -608,23 +787,20 @@ video{
 <div class="screen" id="s8">
   <div class="title grad" style="margin-bottom:2px;">Across Every Mile 🌍</div>
   <div class="card card-scroll">
- 
     <div class="wish-card">
       <div class="wish-header">
         <div class="wish-icon-wrap">🌙</div>
         <div class="wish-title">Same sky, different city</div>
       </div>
-      <div class="wish-body">Every night when you look at the moon, remember I'm looking at the same one. The distance 8,670 kilometers is just a number. Our hearts share the same sky and the same world. 💕</div>
+      <div class="wish-body">Every night when you look at the moon, remember I'm looking at the same one. The distance 8,661 kilometers is just a number. Our hearts share the same sky and the same world. 💕</div>
     </div>
- 
     <div class="wish-card">
       <div class="wish-header">
         <div class="wish-icon-wrap">📱</div>
         <div class="wish-title">Close enough</div>
       </div>
-      <div class="wish-body">A thousand kilometers can't stop our smiles, our bonding or stop me from choosing you  every single day, without exception.</div>
+      <div class="wish-body">A thousand kilometers can't stop our smiles, our bonding or stop me from choosing you every single day, without exception.</div>
     </div>
- 
     <div class="wish-card">
       <div class="wish-header">
         <div class="wish-icon-wrap">✈️</div>
@@ -632,7 +808,6 @@ video{
       </div>
       <div class="wish-body">One day the distance will be zero. Until then, every call, every meme I send, every "miss you" that's me holding your hand from wherever I am. 🌸</div>
     </div>
- 
     <div class="wish-card">
       <div class="wish-header">
         <div class="wish-icon-wrap">⏰</div>
@@ -640,7 +815,6 @@ video{
       </div>
       <div class="wish-body">You might be asleep when I'm wide awake. But I'm still thinking of you. Loving you across time zones is just something I do now. 🌙</div>
     </div>
- 
     <div class="wish-card">
       <div class="wish-header">
         <div class="wish-icon-wrap">💌</div>
@@ -648,7 +822,6 @@ video{
       </div>
       <div class="wish-body">I wish I could be right there next to you today but since I can't, just know: my love travels faster than any flight. Happy Birthday, Pakhi. You are the BEST BEST BEST. 🎂</div>
     </div>
- 
   </div>
   <button class="btn" onclick="go(9)">Our Video 🎥</button>
 </div>
@@ -665,16 +838,14 @@ video{
 <div class="screen" id="s10">
   <div class="title grad" style="margin-bottom:2px;">I Promise You 🤝</div>
   <div class="card card-scroll">
- 
     <div class="promise"><span class="pr-icon">🌅</span><span class="pr-text">To be your good morning even when we're in completely different time zones and it makes no logical sense.</span></div>
     <div class="promise"><span class="pr-icon">💕</span><span class="pr-text">To be your peace and your happy place.</span></div>
-    <div class="promise"><span class="pr-icon">🎧</span><span class="pr-text">To make you happy in every aspect of our life. </span></div>
+    <div class="promise"><span class="pr-icon">🎧</span><span class="pr-text">To make you happy in every aspect of our life.</span></div>
     <div class="promise"><span class="pr-icon">🛡️</span><span class="pr-text">To be your safe space always. You can rant, cry, or say the most unhinged things and I'm not going anywhere.</span></div>
     <div class="promise"><span class="pr-icon">😂</span><span class="pr-text">To make you laugh on your hardest days. Even badly. Especially badly.</span></div>
     <div class="promise"><span class="pr-icon">🌍</span><span class="pr-text">To close this distance. Someday. For real. I mean it with everything I have.</span></div>
     <div class="promise"><span class="pr-icon">💖</span><span class="pr-text">To love you on your best days, your worst days, and every boring Tuesday in between.</span></div>
     <div class="promise" style="margin-bottom:0;"><span class="pr-icon">🏠</span><span class="pr-text">To always be your home wherever that ends up being, whatever it looks like.</span></div>
- 
   </div>
   <button class="btn" onclick="go(11)">Love Meter 💘</button>
 </div>
@@ -711,14 +882,14 @@ video{
     <div style="font-size:52px;filter:drop-shadow(0 0 20px rgba(255,77,166,0.6));">💖</div>
     <div class="final-main" id="finalText"></div>
     <div style="width:50px;height:1.5px;background:linear-gradient(90deg,transparent,#ff4da6,transparent);margin:14px auto;"></div>
-    <p class="final-from">From Your Hemary🌙</p>
+    <p class="final-from">From Your Hemary 🌙</p>
   </div>
 </div>
  
-</div><!-- /app -->
+</div>
  
 <script>
-/* ============ STARFIELD ============ */
+/* STARFIELD */
 const c=document.getElementById('bg-canvas');
 const cx=c.getContext('2d');
 let W,H,stars=[];
@@ -742,7 +913,7 @@ function drawStars(){
 initStars();drawStars();
 window.addEventListener('resize',initStars);
  
-/* ============ FLOATERS ============ */
+/* FLOATERS */
 const FLOATERS=['🌸','✨','💫','🌙','⭐','💕','🌷','🎀','🌺','💞'];
 function spawnFloater(){
   const el=document.createElement('div');
@@ -760,12 +931,15 @@ function spawnFloater(){
 for(let i=0;i<6;i++) setTimeout(spawnFloater,i*500);
 setInterval(spawnFloater,1400);
  
-/* ============ NAV ============ */
-let cur=1;
+/* NAV */
+let cur='s1';
 function go(n){
-  document.getElementById('s'+cur).classList.remove('active');
-  cur=n;
-  const el=document.getElementById('s'+n);
+  const curEl=document.getElementById(cur);
+  if(curEl) curEl.classList.remove('active');
+  const newId = (typeof n === 'number') ? 's'+n : n;
+  cur=newId;
+  const el=document.getElementById(newId);
+  if(!el) return;
   el.style.animation='none';
   void el.offsetWidth;
   el.style.animation='';
@@ -775,21 +949,20 @@ function go(n){
   if(n===11){runMeter();}
 }
  
-/* ============ COUNTDOWN ============ */
+/* COUNTDOWN */
 function startCountdown(){
-  go(2);
-  // Play music immediately on first user interaction
+  document.getElementById('s1').classList.remove('active');
+  cur='s2';
+  document.getElementById('s2').classList.add('active');
   const audio=document.getElementById('song');
   audio.volume=0;
   audio.play().catch(()=>{});
-  // Fade in volume
   let vol=0;
   const fadeIn=setInterval(()=>{
     vol=Math.min(1,vol+0.05);
     audio.volume=vol;
     if(vol>=1)clearInterval(fadeIn);
   },80);
- 
   let num=3;
   const el=document.getElementById('count-num');
   const tick=()=>{
@@ -804,7 +977,7 @@ function startCountdown(){
   setTimeout(tick,1000);
 }
  
-/* ============ NAME ============ */
+/* NAME */
 function nameAnim(){
   const name='Happy Birthday Tonmoy';
   const box=document.getElementById('namebox');
@@ -818,8 +991,8 @@ function nameAnim(){
   });
 }
  
-/* ============ SLIDESHOW ============ */
-const IMGS=['IMG_1.jpg','IMG_2.jpg','IMG_3.jpg','IMG_4.jpg','IMG_5.jpg'];
+/* SLIDESHOW */
+const IMGS=['IMG_1.jpeg','IMG_2.jpeg','IMG_3.jpeg','IMG_4.jpeg','IMG_5.jpeg'];
 let sIdx=0,slotA=true;
 function startSlideshow(){
   sIdx=0;slotA=true;
@@ -837,7 +1010,7 @@ function startSlideshow(){
   },2600);
 }
  
-/* ============ TYPEWRITER ============ */
+/* TYPEWRITER */
 const MSGS=[
   "In 2019... we met in the most unexpected way 🎮",
   "Just two PUBG teammates, nothing serious... 😄",
@@ -870,7 +1043,7 @@ function startTyping(){
   },52);
 }
  
-/* ============ FIREWORKS ============ */
+/* FIREWORKS */
 let fwTimer=null;
 function launchFireworks(){
   if(fwTimer)clearInterval(fwTimer);
@@ -891,7 +1064,7 @@ function launchFireworks(){
   fwTimer=setInterval(burst,1800);
 }
  
-/* ============ LOVE METER ============ */
+/* LOVE METER */
 function runMeter(){
   const fill=document.getElementById('meter-fill');
   const pct=document.getElementById('meter-pct');
@@ -922,7 +1095,7 @@ function runMeter(){
   },900);
 }
  
-/* ============ MUSIC NOTES ============ */
+/* MUSIC NOTES */
 function spawnNote(){
   const el=document.createElement('div');
   el.className='music-note';
@@ -936,7 +1109,7 @@ function spawnNote(){
   setTimeout(()=>el.remove(),2600);
 }
  
-/* ============ FINAL ============ */
+/* FINAL */
 function end(type){
   go(13);
   endHearts();endPetals();
@@ -984,4 +1157,3 @@ function endPetals(){
 </script>
 </body>
 </html>
- 
